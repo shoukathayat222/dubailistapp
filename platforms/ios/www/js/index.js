@@ -47,3 +47,54 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+function sellerSignup(frm){
+    var name=frm.name.value;
+    var str=JSON.stringify($('form').serializeObject());
+    //alert(str);
+   //alert('str');
+    $.ajax({
+	  type: "post",
+	  dataType: "json",
+	  async: true,
+	  cache : false,
+	  crossDomain: true,
+	  url: "http://skelectrical.net/namumkin/ws.php",
+	  data: "str="+str,
+	}).fail(function(responseText){ 
+            //alert(name);
+		alert(responseText);
+                console.log(responseText);
+		
+	})
+	.success(function(data){
+            //alert(data);
+            //alert('login');
+            //alert(data);
+            alert(data.msg);
+            return false;
+            if(data.msg)
+                    alert(data.msg);
+            else{
+               localStorage.token=data.token;
+                window.location ='invoice.html';
+            }
+
+	});
+        return false;
+}
