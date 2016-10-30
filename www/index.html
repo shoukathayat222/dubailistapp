@@ -32,6 +32,62 @@
 	  <script src="js/html5shiv.js"></script>
 	   <script src="js/respond.min.js"></script>
 	<![endif]-->	
+    
+    <script type="text/javascript">
+        /*function getImage() {
+            // Retrieve image file location from specified source
+            navigator.camera.getPicture(uploadPhoto, function(message) {
+			alert('get picture failed');
+		},{
+			quality: 50, 
+			destinationType: navigator.camera.DestinationType.FILE_URI,
+			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+		}
+            );
+ 
+        }
+        */
+        function getImage() {
+            navigator.camera.getPicture(uploadPhoto, function(message) {
+                alert('get picture failed');
+            }, {
+                quality: 100,
+                destinationType: navigator.camera.DestinationType.FILE_URI,
+                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+                correctOrientation: true
+            });
+        }
+        function uploadPhoto(imageURI) {
+            alert('here');
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+ 
+//            var params = new Object();
+//            params.value1 = "test";
+//            params.value2 = "param";
+//            options.params = params;
+            
+            options.chunkedMode = false;
+ 
+            var ft = new FileTransfer();
+            
+            ft.upload(imageURI, "http://skelectrical.net/namumkin/ws.php", win, fail, options);
+        }
+ 
+        function win(r) {
+            alert('win');
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+            alert(r.response);
+        }
+ 
+        function fail(error) {
+            alert("An error has occurred: Code = " + error.code);
+        }
+    </script>
   </head>
   <body>
   
@@ -69,7 +125,9 @@
                                     <form class="form-signin" role="form" id="form" name="frm" method="post" >
 							<div id="sendmessage">
 														
-							</div>								
+							</div>			
+                                        
+                                                        <button onclick="getImage();">Upload a Photo</button>
 							<ul class="listForm">
 								<li>
 									<label>Your name<span>&#40; Required &#41;</span></label>
@@ -123,6 +181,7 @@
     <!-- JavaScript plugins (requires jQuery) -->
     <script src="js/jquery.js"></script>
     <script src="js/index.js"></script>	
+    <script type="text/javascript" src="cordova.js"></script>
 	<!-- JavaScript easing plugins -->
 	<script src="js/jquery.easing.1.3.js"></script>	
 	
