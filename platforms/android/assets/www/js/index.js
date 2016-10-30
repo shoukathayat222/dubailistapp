@@ -47,3 +47,114 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+function sellerSignup(){
+    var frm=document.frm;
+    if(frm.name.value==''){
+        alert("Please Enter Name");
+        frm.name.focus();
+    }
+    else if(frm.email.value==''){
+        alert("Please Enter Valid Email");
+        frm.email.focus();
+    }
+    else{
+        var name=frm.name.value;
+        var email =frm.email.value;
+        var phone=frm.phone.value;
+        str='';
+        $.ajax({
+	  type: "post",
+	  dataType: "json",
+	  async: true,
+	  cache : false,
+	  crossDomain: true,
+	  //url: "https://aurora.dubailist.com/site/getuserstore/161",
+          url: "https://aurora.dubailist.com/sitem/storefrommobile",
+	  data: "name="+name+"&email="+email+"&phone="+phone,
+	}).fail(function(responseText){ 
+            //alert(name);
+		alert(responseText);
+                console.log(responseText);
+		
+	})
+	.success(function(data){
+            //alert(data);
+            //alert('login');
+            //alert(data);
+//            console.log(data);
+//            return false;
+            user_id=data.user_id;
+            if(user_id >0){
+                localStorage.user_id_mobile=user_id;
+                window.location ='store.html';
+            }
+            //console.log(data);
+            //alert(data.msg);
+            return false;
+            if(data.msg)
+                    alert(data.msg);
+            else{
+               localStorage.token=data.token;
+                window.location ='invoice.html';
+            }
+
+	});
+       //alert('here');
+        //window.location ='store.html';
+    }
+//    var name=frm.name.value;
+//    var str=JSON.stringify($('form').serializeObject());
+//    alert(str);
+    //alert('Its In Process...');
+    
+   
+    //window.location.replace("store.html");
+    
+
+   //return true;
+//    $.ajax({
+//	  type: "post",
+//	  dataType: "json",
+//	  async: true,
+//	  cache : false,
+//	  crossDomain: true,
+//	  url: "http://skelectrical.net/namumkin/ws.php",
+//	  data: "str="+str,
+//	}).fail(function(responseText){ 
+//            //alert(name);
+//		alert(responseText);
+//                console.log(responseText);
+//		
+//	})
+//	.success(function(data){
+//            //alert(data);
+//            //alert('login');
+//            //alert(data);
+//            alert(data.msg);
+//            return false;
+//            if(data.msg)
+//                    alert(data.msg);
+//            else{
+//               localStorage.token=data.token;
+//                window.location ='invoice.html';
+//            }
+//
+//	});
+        //return false;
+}

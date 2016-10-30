@@ -1,60 +1,148 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-
+<html lang="en">
+  
 <head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="ico/favicon.png">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="Generator" content="Cocoa HTML Writer">
+    <meta name="CocoaVersion" content="1404.34">
+    <title>DubaiList App</title>
+	
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Hello World</title>
-</head>
+    <!-- Custom style -->
+    <link href="css/style.css" rel="stylesheet">
+	
+	<!-- Font -->
+	<link href='http://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>
 
-<body>
-    <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
-    </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
-</body>
+	<!-- Custom style -->
+    <link href="skin/default.css" rel="stylesheet">
+	
+	<!-- color picker -->
+	<link href="css/colorpicker.css" rel="stylesheet" />
+	
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+	  <script src="js/html5shiv.js"></script>
+	   <script src="js/respond.min.js"></script>
+	<![endif]-->	
+  </head>
+  <body>
+  
+	<!-- Header -->
+	<header>
+		<div class="navbar">
+			<div class="container">
+				<a class="navbar-brand" href="index-2.html"><img src="img/logo.png" alt="" /></a>
+				
+			</div><!-- End container -->
+		</div><!-- End navbar -->
+	</header>
+	<!-- End header -->
+	
+	<!-- Start page header -->
+	<section id="page-head">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">		
+					<h2>Sign Up</h2>
+					
+				</div>
+			</div>
+		</div>	
+	</section>
+	<!-- End page header -->
+	
+
+	
+	<!-- Start contain -->
+	<section id="top" class="contain clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">	
+                                    <form class="form-signin" role="form" id="form" name="frm" method="post" >
+							<div id="sendmessage">
+														
+							</div>								
+							<ul class="listForm">
+								<li>
+									<label>Your name<span>&#40; Required &#41;</span></label>
+                                                                        <input class="form-control" type="text" id="name" name="name" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />									
+									<div class="validation"></div>
+								</li>
+								<li>
+									<label>Your email<span>&#40; Required &#41;</span></label>
+                                                                        <input class="form-control" type="text" id="email" name="email" data-rule="email" data-msg="Please enter a valid email" />										
+									<div class="validation"></div>
+								</li>
+                                                                <li>
+									<label>Your phone<span>&#40; Required &#41;</span></label>
+                                                                        <input class="form-control" type="text" id="phone" name="phone" data-rule="phone" data-msg="Please enter a valid phone" />										
+									<div class="validation"></div>
+								</li>
+
+<!--									<li>
+
+								     <label class="btn btn-default btn-file">
+                                                                        Browse <input type="file" style="display: none;">
+                                                                         </label>
+                                                                     </li>
+								<li>
+									<label>Your message<span>&#40; Required &#41;</span></label>
+                                                                        <textarea class="form-control" rows="9" id="message" name="message" data-rule="required" data-msg="Please write something for us"></textarea>												
+									<div class="validation"></div>
+								</li>-->
+								<li>
+                                                                    <input type="button" value="Send message" class="btn btn-lg btn-red" name="Submit" onclick="sellerSignup()" />
+								</li>
+							</ul>
+						</form>
+				</div>
+				
+			</div>		
+		</div>
+	</section>
+	<!-- End contain -->
+	
+
+	
+	<footer>
+<!--			<div class="alert alert-info marginbot35">
+								  <button type="button" class="close" data-dismiss="alert">&times;</button>
+								  <strong>Your message has been sent. Thank you!</strong><br />
+								
+								</div>		-->
+	</footer>
+	
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="js/jquery.js"></script>
+    <script src="js/index.js"></script>	
+	<!-- JavaScript easing plugins -->
+	<script src="js/jquery.easing.1.3.js"></script>	
+	
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+	<!-- to top -->
+	<script src="js/totop/jquery.ui.totop.js"></script>
+	<script src="js/totop/setting.js"></script>	
+	
+	<!-- Validation -->
+<!--	<script src="js/validation.js"></script>-->
+
+	<!-- theme option -->
+	<script src="js/theme-option/colorpicker.js"></script>
+	<script src="js/theme-option/optionspanel.js"></script>
+		
+	<!-- Custom js -->
+<!--    <script src="js/custom.js"></script>-->
+	
+  </body>
 
 </html>
