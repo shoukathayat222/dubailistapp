@@ -25,33 +25,33 @@
 13 silly mapToRegistry uri https://registry.npmjs.org/ios-deploy
 14 verbose request uri https://registry.npmjs.org/ios-deploy
 15 verbose request no auth needed
-16 info attempt registry request try #1 at 12:38:34 PM
-17 verbose request id 593f8856e469832e
+16 info attempt registry request try #1 at 10:20:13 AM
+17 verbose request id c0d9b755a24cc4d0
 18 verbose etag "BAXBIYKVQEBBZBAACOFGP86VU"
 19 http request GET https://registry.npmjs.org/ios-deploy
 20 http 304 https://registry.npmjs.org/ios-deploy
-21 verbose headers { date: 'Fri, 21 Oct 2016 08:39:46 GMT',
+21 verbose headers { date: 'Sun, 30 Oct 2016 06:22:10 GMT',
 21 verbose headers   via: '1.1 varnish',
 21 verbose headers   'cache-control': 'max-age=300',
 21 verbose headers   etag: '"BAXBIYKVQEBBZBAACOFGP86VU"',
-21 verbose headers   age: '196',
+21 verbose headers   age: '116',
 21 verbose headers   connection: 'keep-alive',
-21 verbose headers   'x-served-by': 'cache-fjr7921-FJR',
+21 verbose headers   'x-served-by': 'cache-fjr7920-FJR',
 21 verbose headers   'x-cache': 'HIT',
-21 verbose headers   'x-cache-hits': '1',
-21 verbose headers   'x-timer': 'S1477039186.859616,VS0,VE0',
+21 verbose headers   'x-cache-hits': '2',
+21 verbose headers   'x-timer': 'S1477808530.376728,VS0,VE0',
 21 verbose headers   vary: 'Accept-Encoding' }
 22 silly get cb [ 304,
-22 silly get   { date: 'Fri, 21 Oct 2016 08:39:46 GMT',
+22 silly get   { date: 'Sun, 30 Oct 2016 06:22:10 GMT',
 22 silly get     via: '1.1 varnish',
 22 silly get     'cache-control': 'max-age=300',
 22 silly get     etag: '"BAXBIYKVQEBBZBAACOFGP86VU"',
-22 silly get     age: '196',
+22 silly get     age: '116',
 22 silly get     connection: 'keep-alive',
-22 silly get     'x-served-by': 'cache-fjr7921-FJR',
+22 silly get     'x-served-by': 'cache-fjr7920-FJR',
 22 silly get     'x-cache': 'HIT',
-22 silly get     'x-cache-hits': '1',
-22 silly get     'x-timer': 'S1477039186.859616,VS0,VE0',
+22 silly get     'x-cache-hits': '2',
+22 silly get     'x-timer': 'S1477808530.376728,VS0,VE0',
 22 silly get     vary: 'Accept-Encoding' } ]
 23 verbose etag https://registry.npmjs.org/ios-deploy from cache
 24 verbose get saving ios-deploy to /Users/ShoukatHayat/.npm/registry.npmjs.org/ios-deploy/.cache.json
@@ -196,7 +196,7 @@
 146 silly install printInstalled
 147 verbose stack Error: ENOENT: no such file or directory, chmod '/usr/local/lib/node_modules/ios-deploy/build/Release/ios-deploy'
 147 verbose stack     at Error (native)
-148 verbose cwd /Users/ShoukatHayat/dubailistapp
+148 verbose cwd /Users/ShoukatHayat/MobileApp/dubailistapp
 149 error Darwin 15.3.0
 150 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-g" "ios-deploy"
 151 error node v6.9.1

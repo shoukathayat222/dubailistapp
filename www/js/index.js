@@ -63,11 +63,16 @@ $.fn.serializeObject = function()
     });
     return o;
 };
-function sellerSignup(frm){
-    var name=frm.name.value;
-    var str=JSON.stringify($('form').serializeObject());
-    //alert(str);
-   alert('Its In Process...');
+function sellerSignup(){
+//    var name=frm.name.value;
+//    var str=JSON.stringify($('form').serializeObject());
+//    alert(str);
+    //alert('Its In Process...');
+   window.location ='store.html';
+    //window.location.replace("store.html");
+    
+
+   //return true;
 //    $.ajax({
 //	  type: "post",
 //	  dataType: "json",
@@ -96,5 +101,5 @@ function sellerSignup(frm){
 //            }
 //
 //	});
-        return false;
+        //return false;
 }

@@ -77,13 +77,13 @@
     </feature>
     <name>dubailistapp</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        DubaiList Mobile Application.
     </description>
     <author email="shoukathayat222@gmail.com" href="http://dubailist.com">
         DubaiList Team
     </author>
     <content src="index.html" />
-    <icon src="icon.png" />
+    <icon gap:role="default" src="www/res/icon.png" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
