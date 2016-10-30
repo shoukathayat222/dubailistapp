@@ -66,33 +66,38 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">	
-                                    <form class="form-signin" role="form" method="post" >
+                                    <form class="form-signin" role="form" id="form" name="frm" method="post" >
 							<div id="sendmessage">
 														
 							</div>								
 							<ul class="listForm">
 								<li>
 									<label>Your name<span>&#40; Required &#41;</span></label>
-									<input class="form-control" type="text" name="name" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />									
+                                                                        <input class="form-control" type="text" id="name" name="name" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />									
 									<div class="validation"></div>
 								</li>
 								<li>
 									<label>Your email<span>&#40; Required &#41;</span></label>
-									<input class="form-control" type="text" name="email" data-rule="email" data-msg="Please enter a valid email" />										
+                                                                        <input class="form-control" type="text" id="email" name="email" data-rule="email" data-msg="Please enter a valid email" />										
+									<div class="validation"></div>
+								</li>
+                                                                <li>
+									<label>Your phone<span>&#40; Required &#41;</span></label>
+                                                                        <input class="form-control" type="text" id="phone" name="phone" data-rule="phone" data-msg="Please enter a valid phone" />										
 									<div class="validation"></div>
 								</li>
 
-									<li>
+<!--									<li>
 
 								     <label class="btn btn-default btn-file">
-                                     Browse <input type="file" style="display: none;">
-                                      </label>
-                                      </li>
+                                                                        Browse <input type="file" style="display: none;">
+                                                                         </label>
+                                                                     </li>
 								<li>
 									<label>Your message<span>&#40; Required &#41;</span></label>
-									<textarea class="form-control" rows="9" name="message" data-rule="required" data-msg="Please write something for us"></textarea>												
+                                                                        <textarea class="form-control" rows="9" id="message" name="message" data-rule="required" data-msg="Please write something for us"></textarea>												
 									<div class="validation"></div>
-								</li>
+								</li>-->
 								<li>
                                                                     <input type="button" value="Send message" class="btn btn-lg btn-red" name="Submit" onclick="sellerSignup()" />
 								</li>
@@ -136,7 +141,7 @@
 	<script src="js/theme-option/optionspanel.js"></script>
 		
 	<!-- Custom js -->
-    <script src="js/custom.js"></script>
+<!--    <script src="js/custom.js"></script>-->
 	
   </body>
 

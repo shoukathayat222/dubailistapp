@@ -32,10 +32,11 @@
 	  <script src="js/html5shiv.js"></script>
 	   <script src="js/respond.min.js"></script>
 	<![endif]-->	
+    
   </head>
   <body>
-      <div style="width:100%;height:100%;">
-      <iframe src="https://aurora.dubailist.com/store/161" style="width:100%; height: 1000px !Important;border:1px solid #f00;"></iframe>
+      <div id="loadiframe">
+<!--          <iframe id="iframe" src="" style="width:100%;height: 1000px !Important;border:1px solid #f00;"></iframe>-->
       </div>
     <!-- JavaScript plugins (requires jQuery) -->
     <script src="js/jquery.js"></script>
@@ -58,8 +59,16 @@
 	<script src="js/theme-option/optionspanel.js"></script>
 		
 	<!-- Custom js -->
-    <script src="js/custom.js"></script>
-	
+<!--    <script src="js/custom.js"></script>-->
+	<script type="text/javascript">
+        $(document).ready(function(){
+            user_id=localStorage.user_id_mobile;
+            //alert(user_id);
+            //$("#iframe").attr('src','https://aurora.dubailist.com/store/'+user_id);
+            var src='https://aurora.dubailist.com/store/'+user_id;
+            $("#loadiframe").html('<iframe id="iframe" src="'+src+'" style="width:100%;height: 1000px !Important;"></iframe>');
+        });
+    </script>
   </body>
 
 </html>
