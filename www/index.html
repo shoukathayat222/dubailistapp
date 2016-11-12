@@ -25,15 +25,42 @@
     <link href="skin/default.css" rel="stylesheet">
 	
 	<!-- color picker -->
-	<link href="css/colorpicker.css" rel="stylesheet" />
+    <link href="css/colorpicker.css" rel="stylesheet" />
 	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
 	  <script src="js/html5shiv.js"></script>
 	   <script src="js/respond.min.js"></script>
 	<![endif]-->	
-    
+    <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
+        //module.controller('PictureCtrl', function($scope, $cordovaCamera) {
+
+            document.addEventListener("deviceready", function () {
+
+              var options = {
+                quality: 50,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.CAMERA,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                targetWidth: 100,
+                targetHeight: 100,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false,
+                    correctOrientation:true
+              };
+
+              $cordovaCamera.getPicture(options).then(function(imageData) {
+                var image = document.getElementById('cameraPic');
+                image.src = "data:image/jpeg;base64," + imageData;
+              }, function(err) {
+                // error
+              });
+
+            }, false);
+          //});
+        var sPicData;
         /*function getImage() {
             // Retrieve image file location from specified source
             navigator.camera.getPicture(uploadPhoto, function(message) {
@@ -57,17 +84,79 @@
                 correctOrientation: true
             });
         }
-        function uploadPhoto(imageURI) {
+           function capturePhoto(){
+                navigator.camera.getPicture(picOnSuccess, picOnFailure, { 
+//                    quality: 20,
+//                    destinationType: Camera.DestinationType.DATA_URL,
+//                    sourceType: Camera.PictureSourceType.CAMERA,
+//                    correctOrientation: true
+                quality: 50,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.CAMERA,
+//                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+//                targetWidth: 100,
+//                targetHeight: 100,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false,
+                    correctOrientation:true
+                });
+                alert('herexxx');
+                return false;
+            }
+         function getPhoto(){
+            navigator.camera.getPicture(picOnSuccess, picOnFailure, { 
+                quality: 20,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                correctOrientation: true
+            });
+        }
+        function picOnFailure(message){
+            alert('Failed because: ' + message);
+        }
+        function picOnSuccess(imageData){
+                alert('not');
+                //console.log("pic uploaded");
+                var image = document.getElementById('cameraPic');
+                image.src = imageData;
+                sPicData  = imageData; //store image data in a variable
+        }
+        // ----- upload image ------------
+        function photoUpload() {
+            alert('testasdfsdf');
+            var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = sPicData.substr(sPicData.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
+            options.chunkedMode = false;
+
+            //var params = new Object();
+            //params.fileKey = "file";
+            //options.params = {}; // eig = params, if we need to send parameters to the server request
+            alert('here');
+            ft = new FileTransfer();
+            ft.upload(sPicData, "http://XXXXXXXX.com/app/upload.php", win, fail, options); 
+        }
+
+        function win(){
+            alert("image uploaded scuccesfuly");
+        }
+
+        function fail(){
+            alert("image upload has been failed");
+        }
+        /*function uploadPhoto(imageURI) {
             alert('here');
             var options = new FileUploadOptions();
             options.fileKey="file";
             options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
  
-//            var params = new Object();
-//            params.value1 = "test";
-//            params.value2 = "param";
-//            options.params = params;
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+            options.params = params;
             
             options.chunkedMode = false;
  
@@ -87,22 +176,25 @@
         function fail(error) {
             alert("An error has occurred: Code = " + error.code);
         }
+        */
     </script>
   </head>
   <body>
-  
+      <div id="loadiframe">
+<!--          <iframe id="iframe" src="" style="width:100%;height: 1000px !Important;border:1px solid #f00;"></iframe>-->
+      </div>
 	<!-- Header -->
-	<header>
+<!--	<header>
 		<div class="navbar">
 			<div class="container">
 				<a class="navbar-brand" href="index-2.html"><img src="img/logo.png" alt="" /></a>
 				
-			</div><!-- End container -->
-		</div><!-- End navbar -->
+			</div> End container 
+		</div> End navbar 
 	</header>
-	<!-- End header -->
+	 End header 
 	
-	<!-- Start page header -->
+	 Start page header 
 	<section id="page-head">
 		<div class="container">
 			<div class="row">
@@ -113,11 +205,11 @@
 			</div>
 		</div>	
 	</section>
-	<!-- End page header -->
+	 End page header 
 	
 
 	
-	<!-- Start contain -->
+	 Start contain 
 	<section id="top" class="contain clearfix">
 		<div class="container">
 			<div class="row">
@@ -126,8 +218,14 @@
 							<div id="sendmessage">
 														
 							</div>			
-                                        
-                                                        <button onclick="getImage();">Upload a Photo</button>
+                                                        
+                                        <button onclick="getImage();">Upload a Photo</button><br>
+                                        <button onclick="capturePhoto();">Capture a Photo</button><br>
+                                                        <button class="camera-control" onclick="getPhoto();">From Photo Library</button><br>
+                                                        <button class="camera-control" onclick="photoUpload();">UPLOAD</button>
+                                                         <div style="text-align:center;margin:20px;">
+                                                            <img id="cameraPic" src="" style="width:auto;height:120px;"></img>
+                                                        </div>
 							<ul class="listForm">
 								<li>
 									<label>Your name<span>&#40; Required &#41;</span></label>
@@ -145,7 +243,7 @@
 									<div class="validation"></div>
 								</li>
 
-<!--									<li>
+									<li>
 
 								     <label class="btn btn-default btn-file">
                                                                         Browse <input type="file" style="display: none;">
@@ -155,7 +253,7 @@
 									<label>Your message<span>&#40; Required &#41;</span></label>
                                                                         <textarea class="form-control" rows="9" id="message" name="message" data-rule="required" data-msg="Please write something for us"></textarea>												
 									<div class="validation"></div>
-								</li>-->
+								</li>
 								<li>
                                                                     <input type="button" value="Submit" class="btn btn-lg btn-red" name="Submit" onclick="sellerSignup()" />
 								</li>
@@ -166,22 +264,22 @@
 			</div>		
 		</div>
 	</section>
-	<!-- End contain -->
+	 End contain 
 	
 
 	
 	<footer>
-<!--			<div class="alert alert-info marginbot35">
+			<div class="alert alert-info marginbot35">
 								  <button type="button" class="close" data-dismiss="alert">&times;</button>
 								  <strong>Your message has been sent. Thank you!</strong><br />
 								
-								</div>		-->
-	</footer>
+								</div>		
+	</footer>-->
 	
     <!-- JavaScript plugins (requires jQuery) -->
     <script src="js/jquery.js"></script>
     <script src="js/index.js"></script>	
-    <script type="text/javascript" src="cordova.js"></script>
+    
 	<!-- JavaScript easing plugins -->
 	<script src="js/jquery.easing.1.3.js"></script>	
 	
@@ -198,7 +296,16 @@
 	<!-- theme option -->
 	<script src="js/theme-option/colorpicker.js"></script>
 	<script src="js/theme-option/optionspanel.js"></script>
-		
+        <script type="text/javascript">
+            $(document).ready(function(){
+                //user_id=localStorage.user_id_mobile;
+                //alert(user_id);
+                //$("#iframe").attr('src','https://aurora.dubailist.com/store/'+user_id);
+                //var src='https://aurora.dubailist.com/store/'+user_id;
+                var src='https://dev.serviceexpress.us/';
+                $("#loadiframe").html('<iframe id="iframe" src="'+src+'" style="width:100%;height: 1000px !Important;"></iframe>');
+            });
+        </script>
 	<!-- Custom js -->
 <!--    <script src="js/custom.js"></script>-->
 	
